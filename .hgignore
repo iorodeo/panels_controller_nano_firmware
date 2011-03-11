@@ -9,6 +9,7 @@ syntax: glob
 *.pkl
 *.dxf
 *.komodo*
+*.asv
 *.egg-info
 .DS_Store
 build
