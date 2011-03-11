@@ -65,9 +65,6 @@ void loop() {
     }
   }
   if (sendFrame == true) {
-    Serial.print(frame_n,DEC);
-    Serial.print(", ");
-    Serial.println(maxDelayCnt,DEC);
     Wire.beginTransmission(GENERAL_CALL_ADDRESS); // transmit to all devices
     Wire.send(PATTERN[frame_n],INITIAL_PATTERN_BYTE_COUNT);
     Wire.endTransmission();    // stop transmitting
