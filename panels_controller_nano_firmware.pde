@@ -57,14 +57,14 @@ void setup() {
 void loop() {
   while (Serial.available() > 0) {
     uint8_t byte = (uint8_t) Serial.read();
-    if (byte > 0) {
+    if (byte >= 0) {
       ATOMIC_BLOCK(ATOMIC_RESTORESTATE) {
         maxDelayCnt = byte;
         delayCnt = 0;
       }
     }
   }
-  if (sendFrame == true) {
+  if ((maxDelayCnt > 0) && (sendFrame == true)) {
     Wire.beginTransmission(GENERAL_CALL_ADDRESS); // transmit to all devices
     Wire.send(PATTERN[frame_n],INITIAL_PATTERN_BYTE_COUNT);
     Wire.endTransmission();    // stop transmitting

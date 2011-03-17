@@ -57,7 +57,7 @@ classdef  PanelsNano < handle
          
         function setFrameDt(self,dt)
             % Set the frame dt in ms 
-            if (dt < 1) || (dt > 255)
+            if (dt < 0) || (dt > 255)
                 error('frame dt must be between 1 and 255');
             end
             fwrite(self.dev, char(dt));    
